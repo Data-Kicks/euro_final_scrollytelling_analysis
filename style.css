@@ -1,0 +1,89 @@
+* {
+  font-family: "Exo 2", sans-serif;
+}
+
+a {
+  color: #007574;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #007574;
+}
+
+.navbar-logo {
+  max-height: 50px;
+}
+
+.navbar-title, .quarto-navigation-tool, svg.aa-SubmitIcon {
+  color: black !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: #97edd3;
+}
+
+.navbar-nav .nav-link{
+  color: #e8fffd;
+}
+
+.quarto-title {
+  text-align: center !important;
+}
+
+#quarto-content{
+  background-color: #f1fdf6 !important;
+}
+
+img {
+  border-radius: 15px !important;
+}
+
+figcaption {
+  text-align: center !important;
+}
+
+.cr-section {
+  background-color: #e2f2e9 !important;
+}
+
+#cr-goal-spa-0.sticky.cr-active, #cr-xg-evo-5-1.sticky.cr-active {
+  transition: opacity linear 0.5s, color 0.7s linear, transform 1s ease-in-out, transform-origin 1s ease-in-out !important;
+}
+
+.cr-section .sticky-col .sticky-col-stack .cr-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: visibility 0s !important;
+}
+
+.cr-section .sticky-col .sticky-col-stack .sticky {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.narrative {
+  color: black !important;
+  background-color: #d0e8e0 !important;
+  border-radius: 15px !important;
+}
+
+.cr-section .sticky-col .sticky-col-stack div.sourceCode {
+    background-color: #eef9f2 !important;
+}
+
+code {
+  font-size: small !important;
+}
+
+.aa-DetachedFormContainer {
+    background-color: #d3e4e0 !important;
+}
+
+.aa-Autocomplete .aa-Form .aa-InputWrapper .aa-Input, .aa-DetachedFormContainer .aa-Form .aa-InputWrapper .aa-Input {
+    background-color: #e1f1ee !important;
+}
+
+.aa-Autocomplete .aa-Form, .aa-DetachedFormContainer .aa-Form {
+    background-color: #d4ece1 !important;
+}
