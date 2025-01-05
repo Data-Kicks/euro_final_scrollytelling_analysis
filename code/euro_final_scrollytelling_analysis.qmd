@@ -1,0 +1,344 @@
+---
+title: EURO 2024 Final Scrollytelling Analysis
+css: "style.css"
+include-after-body: "footer.html"
+brand: "_brand.yml"
+editor_options: 
+  chunk_output_type: console
+format:
+  closeread-html:
+    embed-resources: true
+    header-includes: |
+      <link rel = "shortcut icon" href = "images/ao_logo_shortcut.png"/>
+      <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+---
+
+<br>
+
+The "scrollytelling" technique can be a very interesting way to make soccer (or other sports) analysis more dynamic and interactive. In this document, we will attempt to tell a story using data from the EURO 2024 final between Spain and England and find all the keys to the match in a more entertaining way.
+
+<br>
+
+![image: uefa.com](images/euro24_finalposter.jpeg){fig-align="center" width="1200"}
+
+<br>
+
+In this match, Spain achieved a last victory for the national team in a perfect tournament, with seven wins in seven matches (no national team had ever won all matches in the tournament), surpassing all the European teams that are World Champions at every round: Italy in the group stage, Germany in the quarter-finals, France in the semi-finals, and England in the final.
+
+<br>
+
+[**Match preview**]{.smallcaps}
+
+We will analyze the main moments of the match, from the players who entered at the start to the most influential plays.
+
+<br>
+
+```{r warning=F, echo=F, message=F, results='hide'}
+source("fct_viz.R")
+
+formation_data <- read.csv("data/Spain_England_formations.csv")
+```
+
+:::::::::::::: cr-section
+To start our analysis, let's look at the line-ups of both teams, line by line. @cr-pitch
+
+::: {#cr-pitch}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(formation_data, hover_img = T)
+```
+:::
+
+The home team for the final is Spain. Luis De la Fuente chose a 1-4-2-3-1 formation in attack. @cr-pitch-spa
+
+::: {#cr-pitch-spa}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "Spain")
+```
+:::
+
+In goal, we have Unai Simon, the starting goalkeeper throughout the tournament, who arrived at the final having conceded only 3 goals in 5 matches, keeping a clean sheet in 2 group stage games. @cr-pitch-spa-por
+
+::: {#cr-pitch-spa-por}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "Spain", highlighted_position = "Goalkeeper")
+```
+:::
+
+In defense, although N. Fernández and J. Navas started in the semi-finals due to suspensions for Le Normand and Carvajal, the 4 starters for this line were able to take the field in the final. @cr-pitch-spa-def
+
+::: {#cr-pitch-spa-def}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "Spain", highlighted_position = "Defender")
+```
+:::
+
+The current Ballon d'Or winner, Rodri, accompanied by Fabián Ruiz, was the usual pairing in the Spanish midfield. @cr-pitch-spa-med
+
+::: {#cr-pitch-spa-med}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "Spain", highlighted_position = "Midfielder")
+```
+:::
+
+In attack, the quality is provided by two of the best young players today, Lamine Yamal and Nico Williams, along with Dani Olmo, who also had a great tournament. Up front, Morata does the dirty work. @cr-pitch-spa-att
+
+::: {#cr-pitch-spa-att}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "Spain", highlighted_position = "Attacker")
+```
+:::
+
+On the English side, Gareth Southgate also used a 1-4-2-3-1 system. @cr-pitch-eng
+
+::: {#cr-pitch-eng}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(formation_data, highlighted_team = "England")
+```
+:::
+
+Jordan Pickford is indisputable in goal. Notably, he made a decisive penalty save in the quarter-finals against Switzerland. @cr-pitch-eng-por
+
+::: {#cr-pitch-eng-por}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "England", highlighted_position = "Goalkeeper")
+```
+:::
+
+In defense, it was surprising to see Trippier playing on the left side throughout the tournament, but, unexpectedly, Southgate decided to align Luke Shaw in the final to try to contain Lamine Yamal. The rest of the defensive lineup were the same as in most previous matches. @cr-pitch-eng-def
+
+::: {#cr-pitch-eng-def}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "England", highlighted_position = "Defender")
+```
+:::
+
+In midfield, Rice was a fixture in all matches, and Mainoo earned his spot starting from the knockout rounds. @cr-pitch-eng-med
+
+::: {#cr-pitch-eng-med}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "England", highlighted_position = "Midfielder")
+```
+:::
+
+Finally, in attack, the main English stars were not having a good tournament, including players with the quality of Bellingham and Kane. @cr-pitch-eng-att
+
+::: {#cr-pitch-eng-att}
+```{r warning=F, echo=F, message=F}
+create_formations_plot(data = formation_data, highlighted_team = "England", highlighted_position = "Attacker")
+```
+:::
+::::::::::::::
+
+<br>
+
+[**First period summary**]{.smallcaps}
+
+The final did not deviate from the expected script, starting with Luis de la Fuente's Spain looking for the rival goal, while England was well protected, especially on the flanks, with Kyle Walker and Luke Shaw winning their individual duels against Nico Williams and Lamine Yamal, respectively. Without options on the outside, the Spanish national team also struggled to find solutions inside against a solid England that executed their game plan during the first forty-five minutes. 
+
+<br> 
+
+[**Spain's groundbreaking second period start**]{.smallcaps}
+
+In the second half, everything changed in favor of Spain just a couple of minutes in. Let's see it!
+
+<br>
+
+::::::::::: cr-section
+In the 47th minute, a great play by Lamine Yamal ended with a goal from Nico Williams to open the scoring. @cr-goal-spa-0
+
+::: {#cr-goal-spa-0}
+```{r warning=F, echo=F, message=F}
+goal_data <- read.csv("data/Spain_first_goal_0.csv")
+
+create_goal_sequence_plot(goal_data)
+```
+:::
+
+Let's take a closer look at the play, as a series of supporting actors also deserve their share of the spotlight. [@cr-goal-spa-0]{scale-by="1.5" pan-to="-50%,0%"}
+
+It all starts with an excellent first-touch pass from Carvajal to Yamal, surprising the English defense. [@cr-goal-spa-1]{scale-by="1.5" pan-to="-50%,0%"}
+
+::: {#cr-goal-spa-1}
+```{r warning=F, echo=F, message=F}
+goal_data <- read.csv("data/Spain_first_goal_1.csv")
+
+create_goal_sequence_plot(goal_data)
+```
+:::
+
+After a good controlled touch by the FC Barcelona player, he began a run towards the rival area. As you can see, we've brought two more Spanish players into the scene. Now let's see why. [@cr-goal-spa-2]{scale-by="1.5" pan-to="-50%,0%"}
+
+::: {#cr-goal-spa-2}
+```{r warning=F, echo=F, message=F}
+goal_data <- read.csv("data/Spain_first_goal_2.csv")
+
+create_goal_sequence_plot(goal_data)
+```
+:::
+
+Both Morata and Fabián Ruiz made runs into the area. [@cr-goal-spa-3]{scale-by="1.5" pan-to="-50%,0%"}
+
+::: {#cr-goal-spa-3}
+```{r warning=F, echo=F, message=F}
+goal_data <- read.csv("data/Spain_first_goal_3.csv")
+
+create_goal_sequence_plot(goal_data)
+```
+:::
+
+These movements did not help them receive the ball, but they did attract both Stones and Walker. [@cr-goal-spa-4]{scale-by="1.5" pan-to="-50%,0%"}
+
+::: {#cr-goal-spa-4}
+```{r warning=F, echo=F, message=F}
+goal_data <- read.csv("data/Spain_first_goal_4.csv")
+
+create_goal_sequence_plot(goal_data)
+```
+:::
+
+This created a passing zone for Nico Williams's run into the area. [@cr-goal-spa-5]{scale-by="1.5" pan-to="-50%,0%"}
+
+::: {#cr-goal-spa-5}
+```{r warning=F, echo=F, message=F}
+goal_data <- read.csv("data/Spain_first_goal_5.csv")
+
+create_goal_sequence_plot(goal_data, c(83, 100, 53.5, 78.9))
+```
+:::
+
+Lamine Yamal sees it and makes a precise pass into that zone. [@cr-goal-spa-6]{scale-by="1.5" pan-to="-50%,0%"}
+
+::: {#cr-goal-spa-6}
+```{r warning=F, echo=F, message=F}
+goal_data <- read.csv("data/Spain_first_goal_6.csv")
+
+create_goal_sequence_plot(goal_data, c(83, 100, 53.5, 78.9))
+```
+:::
+
+The rest is history. [@cr-goal-spa-7]{scale-by="1.5" pan-to="-50%,0%"}
+
+::: {#cr-goal-spa-7}
+```{r warning=F, echo=F, message=F}
+goal_data <- read.csv("data/Spain_first_goal_7.csv")
+
+create_goal_sequence_plot(goal_data)
+```
+:::
+:::::::::::
+
+<br>
+
+[**Second period evolution insights**]{.smallcaps}
+
+Far from sitting back, Spain continued attacking and had clear chances to extend their lead. In fact, the total xG (Expected Goals) for this very interesting second half was 1.67 to 0.41. <br> <br> xG is an advanced metric that indicates the probability of scoring based on prior characteristics of the shot, such as distance and angle to the goal or the part of the body used to shoot, among others. <br> <br> Let's see how the xG values evolved for both teams during the second half.
+
+<br>
+
+:::::::::::: cr-section
+As we know, it all starts with 1-0 in favor of Spain. Nico's goal had an xG of 0.1. @cr-xg-evo-0
+
+::: {#cr-xg-evo-0}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_0.csv")
+
+create_shot_dashboard(xg_data)
+```
+:::
+
+Shortly after, in the 49th minute, a long ball to Morata resulted in a clear chance missed by Olmo, with 0.54 xG. To give you an idea, chances are considered clear starting from about 0.3 xG. @cr-xg-evo-1
+
+::: {#cr-xg-evo-1}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_1.csv")
+
+create_shot_dashboard(xg_data)
+```
+:::
+
+In the 55th minute, Morata had two opportunities to score the second goal, one with 0.19 xG. @cr-xg-evo-2
+
+::: {#cr-xg-evo-2}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_2.csv")
+
+create_shot_dashboard(xg_data)
+```
+:::
+
+The first shot from the English side didn't come until the 64th minute. After a good control, Bellingham shot from outside the area, but failed to find the goal of Unai Simon. @cr-xg-evo-3
+
+::: {#cr-xg-evo-3}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_3.csv")
+
+create_shot_dashboard(xg_data)
+```
+:::
+
+Spain responded a minute later with another shot from Yamal that forced Pickford to work hard. @cr-xg-evo-4
+
+::: {#cr-xg-evo-4}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_4.csv")
+
+create_shot_dashboard(xg_data)
+```
+:::
+
+And just when everything seemed to predict Spain's second goal, a run down the right flank by Saka ended with a ball at the edge of the area for Palmer, who had just entered the field. With a precise shot, he leveled the score. <br> <br> Let's take this shot to explain another advanced metric. @cr-xg-evo-5
+
+::: {#cr-xg-evo-5}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_5.csv")
+
+create_shot_dashboard(xg_data)
+```
+:::
+
+If we focus on the two graphs below, we can see in the left graph where the shot was taken from, and if we hover over the point, we can read that the chance generated 0.04 xG. In the right graph, we see the area of the goal where the ball entered. If we hover over it, it tells us that the chance had 0.31 xGOT (Expected Goals On Target). <br> <br> xGOT indicates the probability that the shot will result in a goal once we know characteristics after the shot, such as where it is aimed or its speed. [@cr-xg-evo-5-1]{scale-by="1.5" pan-to="0%,-66%"}
+
+::: {#cr-xg-evo-5-1}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_5.csv")
+
+create_shot_dashboard(xg_data, 12)
+```
+:::
+
+In other words, Palmer added a 27% of probabilities of scoring to that chance. [@cr-xg-evo-5-1]{scale-by="1" pan-to="0%,0%"}
+
+This goal did not discourage Spain, which continued trying, first with another chance from Yamal, again thwarted by Pickford. <br> <br> Next, a great combination through the center ended with an opening to the left flank where Cucurella spotted a gap between the English center-backs and the English goalkeeper, delivering a perfect low cross to Oyarzabal, who did not miss. 2-1! @cr-xg-evo-6
+
+::: {#cr-xg-evo-6}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_6.csv")
+
+create_shot_dashboard(xg_data)
+```
+:::
+
+But the match was not over yet. In the 90th minute, a corner kick was awarded to England. They had up to three shots to equalize at the last moment. <br> First Rice, whose header was saved by Simon. Then Guehi, who caught the rebound, but his shot was cleared off the line by Olmo (who celebrated it as if it were a goal), and finally, again Rice, in a more awkward position, sent the ball wide, bringing the match to a close. @cr-xg-evo-7
+
+::: {#cr-xg-evo-7}
+```{r warning=F, echo=F, message=F}
+xg_data <- read.csv("data/Spain_England_2half_shots_7.csv")
+
+create_shot_dashboard(xg_data)
+```
+:::
+::::::::::::
+
+<br>
+
+[**Final thoughts**]{.smallcaps}
+
+Spain, which very few considered a candidate to win before the tournament began, lifted the EURO cup in Berlin. This was the fourth in their history, making them the team with the most European titles.
+
+<br>
+
+![image: uefa.com](images/euro_spain_top.png){fig-align="center" width="1200"}
+
+<br>
+
+We hope you have enjoyed this different way of analyzing a soccer match and that this encourages you to use the *Closeread* library and build your own stories.
